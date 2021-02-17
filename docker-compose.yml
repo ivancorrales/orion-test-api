@@ -1,0 +1,21 @@
+version: '3'
+services:
+
+  app:
+    image: ivancorrales/demo-api-mongo:0.0.1
+    environment:
+      MONGODB_URI: mongodb://root:secret@mongodb:27017/admin
+    ports:
+      - 3000:3000
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: secret
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+volumes:
+  mongodb_data_container:
+  
